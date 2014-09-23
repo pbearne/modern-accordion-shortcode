@@ -82,32 +82,14 @@ ex:
 
 Allows you to change the icon that is being used by the accordion element. Currently supported is square plus & minus, circle plus & minus and no icon (null). 
 
-ex:
-<code>
-[accordions]
-	[accodion icontype="circle"]
-	
-	[/accordion]
-	
-	[accodion icontype="circle"]
-	
-	[/accordion
-	
-[/accordions]
-</code>
+ex: [accodion icontype="circle"]
+
+
 
 <strong>Please note</strong> you are able to assign a diffrenet type of icons to elements, meaning if you want to have the frist accordion use cirlce icon and the second accodion use square you are able to do so.
 
 ex:
-<code>
-[accordions]
-	[accodion icontype="circle"]
-	
-	[/accordion]
-	
-	[accodion icontype="square"]
-	
-	[/accordion
+<code> [accodion icontype="circle"][/accordion] [accodion icontype="square"][/accordion
 	
 [/accordions]
 </code>
