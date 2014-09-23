@@ -1,8 +1,9 @@
 modern-accordion-shortcode
 ==========================
 
-A simple WordPress plugin that addes a shortcode for accordions.
+<p>A simple WordPress plugin that addes a shortcode for accordions.</p>
 
+<pre>
 [accordions clearStyle=false collapsible=true]
 
 	[accordion title="title" icontype="square"] 
@@ -17,81 +18,86 @@ A simple WordPress plugin that addes a shortcode for accordions.
 	[/accordion]
 	
 [/accordions]
+</pre>
 
 
 ========================== API ==========================
 
 <strong> [accordions][/accordions] </strong>
 
-Parernt container which containers [accodion][/accordion] elements.
+Parernt container which containers the singliar accodion element.
 
-ex:
-<code>
+
+<pre>
 [accordions]
 	[accodion][/accordion]
 [/accordions]
-</code>
+</pre>
 
 -----------------------------------------------------
 
-<strong>collapsible:</strong> true / false
+<strong>collapsible:</strong> boolean
 
-true = all accordions can be closed
+<strong>true</strong> = all accordions can be closed
 
-false = one accordion will always be open
+<strong>false</strong> = one accordion will always be open
 
-
-ex:
-
-<code>
+<pre>
 [accordions collapsible=true]
 	[accodion][/accordion]
 [/accordions]
-</code>
+</pre>
 
 -----------------------------------------------------
 
 <strong>active</strong>: interger
 
-Allows you to select which accrodion is active. For example if you have a total of 5 accordions but you want the 3rd accrodion be to open (active) you would use something like this:
+<p>Allows you to select which accrodion is active. For example if you have a total of 5 accordion elements but you want the 3rd accrodion be to open (active) you would use something like this:</p>
 
-ex:
-<code>
+<pre>
 [accordions active=3]
-	[accodion][/accordion]
-[/accordions]
-</code>
+	[accodion]Content 1[/accordion]
+    [accodion]Content 2[/accordion]
+    [accodion]Content 3[/accordion]
+    [accodion]Content 4[/accordion]
+    [accodion]Content 5[/accordion]
+[/accordions] 
+</pre>
 
 -----------------------------------------------------
 
-<strong>title</strong>: boolen
+<strong>title</strong>: text
 
 Enter the title for the accordion element
 
-ex:
-<code>
+<pre>
 [accordions]
-	[accodion title="This is accordion 1"]
-	
-	[/accordion]
+	[accodion title="This is accordion 1"][/accordion]
 [/accordions]
-</code>
+</pre>
+
 -----------------------------------------------------
 
 <strong>icontype</strong>: circle / square /null
 
 Allows you to change the icon that is being used by the accordion element. Currently supported is square plus & minus, circle plus & minus and no icon (null). 
 
-ex: <code>[accodion icontype="circle"]</code>
+<pre>
+	[accodion icontype="circle"][/accordion
+</pre>
 
 
 
-<strong>Please note</strong> you are able to assign a diffrenet type of icons to elements, meaning if you want to have the frist accordion use cirlce icon and the second accodion use square you are able to do so.
+<strong>Please note</strong>: you are able to assign a diffrenet type of icon to each element. For example you can assign a circle icon to the frist and thrid accordion elements and assign a sqaure icon to the second.
 
-ex:
-<code> [accodion icontype="circle"][/accordion] [accodion icontype="square"][/accordion
-	
+<pre> 
+[accordions]
+	[accodion icontype="circle"]Content 1[/accordion] 
+	[accodion icontype="square"]Content 2[/accordion]
+    [accodion icontype="circle"]Content 3[/accordion] 
 [/accordions]
-</code>
+</pre>
+
+-----------------------------------------------------
 
 More to come...
