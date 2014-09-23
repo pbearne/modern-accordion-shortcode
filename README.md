@@ -21,13 +21,13 @@ A simple WordPress plugin that addes a shortcode for accordions.
 
 ========================== API ==========================
 
-== [accordions][/accordions] == 
+<strong> [accordions][/accordions] </strong>
 
 Parernt container which containers [accodion][/accordion] elements.
 
 -----------------------------------------------------
 
-== collapsible: true / false ==
+<strong>collapsible:</strong> true / false
 
 true = all accordions can be closed
 
@@ -36,9 +36,11 @@ false = one accordion will always be open
 
 ex:
 
+<code>
 [accordions collapsible=true]
 	[accodion][/accordion]
 [/accordions]
+</code>
 
 -----------------------------------------------------
 
@@ -55,14 +57,16 @@ ex:
 
 -----------------------------------------------------
 
-<strong>active</strong>: interger
+<strong>title</strong>: boolen
 
-Allows you to select which accrodion is active. For example if you have a total of 5 accordions but you want the 3rd accrodion be to open (active) you would use something like this:
+Enter the title for the accordion element
 
 ex:
 
-[accordions active=3]
-	[accodion][/accordion]
+[accordions]
+	[accodion title="This is accordion 1"]
+	
+	[/accordion]
 [/accordions]
 
 
