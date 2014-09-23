@@ -82,7 +82,7 @@ ex:
 
 Allows you to change the icon that is being used by the accordion element. Currently supported is square plus & minus, circle plus & minus and no icon (null). 
 
-ex: [accodion icontype="circle"]
+ex: <code>[accodion icontype="circle"]</code>
 
 
 
