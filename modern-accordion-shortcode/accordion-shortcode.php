@@ -1,16 +1,16 @@
 <?php
 /*
-Plugin Name: Modern Accordion Shortcode
-Description: A shortcode for accordions, that also has icon support
-Author: AgentSource
-Version: 0.1
-Author URI: http://ryanadolphson.me
+Plugin Name: Accordion Shortcode
+Description: Adds shortcode that enables you to create accordions
+Author: CTLT
+Version: 1.2.1
+Author URI: http://ctlt.ubc.ca
 */
 
 /**
- * OLT_Accordion_Shortcode class.
+ * MOD_Accordion_Shortcode class.
  */
-class OLT_Accordion_Shortcode {
+class MOD_Accordion_Shortcode {
 	
 	static $add_script;
 	static $shortcode_count;
@@ -44,27 +44,32 @@ class OLT_Accordion_Shortcode {
 	 * @param mixed $content
 	 * @return void
 	 */
-	public static  function accordion_shortcode( $atts, $content ) {
+	public static  function accordion_shortcode( $atts, $content = null ) {
 		global $post;
 		
 		extract(shortcode_atts(array(
 					'title' => null,
 					'class' => null,
-					'icontype' => 'circle',
+					'icontype' => null,
 				), $atts) );
 
 		ob_start();
 
 		if($title): ?>
-			<div id="<?php echo ereg_replace("[^A-Za-z0-9]", "", $title)."-".self::$shortcode_count; ?>" ><div class="mas-icon mas-<?php echo $icontype ?>-add"></div><a href="#<?php echo ereg_replace("[^A-Za-z0-9]", "", $title)."-".self::$shortcode_count; ?>"><?php echo $title; ?></a></div>
+			<h3 id="<?php echo ereg_replace("[^A-Za-z0-9]", "", $title)."-".self::$shortcode_count; ?>" >
+			<div class="mas-icon mas-<?php echo $icontype; ?>"></div>
+			<a href="#<?php echo ereg_replace("[^A-Za-z0-9]", "", $title)."-".self::$shortcode_count; ?>"><?php echo $title; ?> <?php echo $icontype; ?></a>
+			</h3>
 
-			<div class="accordian-shortcode-content <?php echo $class; ?>" >
+			<div class="mas-content <?php echo $class; ?>" >
 				<?php echo do_shortcode( $content ); ?>
 			</div>
 		<?php elseif($post->post_title): ?>
-			<div id="<?php echo ereg_replace("[^A-Za-z0-9]", "", $post->post_title)."-".self::$shortcode_count; ?>"><a href="#<?php echo ereg_replace("[^A-Za-z0-9]", "", $post->post_title)."-".self::$shortcode_count; ?>"><?php echo $post->post_title; ?></a></div>
+			<h3 id="<?php echo ereg_replace("[^A-Za-z0-9]", "", $post->post_title)."-".self::$shortcode_count; ?>">
+			<a href="#<?php echo ereg_replace("[^A-Za-z0-9]", "", $post->post_title)."-".self::$shortcode_count; ?>"><?php echo $post->post_title; ?> <?php echo $icontype; ?></a>
+			</h3>
 
-			<div class="accordion-shortcode-content <?php echo $class; ?>">
+			<div class="mas-content <?php echo $class; ?>">
 				<?php echo do_shortcode( $content ); ?>
 			</div>
 	    <?php else: ?>
@@ -114,13 +119,14 @@ class OLT_Accordion_Shortcode {
 		$query_atts = shortcode_atts( array(
 				'autoHeight'  => false,
 				'disabled'   => false,
-				'active'  => 0,
+				'active'  => 1,
 				'animated'   => 'slide',
 				'clearStyle'  => false,
 				'collapsible'  => false,
 				'event'   => 'click',
 				'fillSpace'  => false,
 				'heightStyle' => 'content',
+				'animate' => 500,
 			), $attr);
 		$id = "random-accordion-id-".rand(0,1000);
 
@@ -128,7 +134,7 @@ class OLT_Accordion_Shortcode {
 
 		self::$shortcode_js_data[$id] = $query_atts;
 
-		return str_replace("\r\n", '', '<div id="'.$id.'" class="accordions-shortcode mas">'.do_shortcode( $content ).'</div>');
+		return str_replace("\r\n", '', '<div id="'.$id.'" class="mas">'.do_shortcode( $content ).'</div>');
 
 	}
 	
@@ -141,7 +147,7 @@ class OLT_Accordion_Shortcode {
 	 */
 	static function register_script() {
 		wp_enqueue_style( 'modern-accordion-style', plugins_url('accordion.css', __FILE__), true );
-		wp_register_script( 'accordion-shortcode' , plugins_url('accordion.js', __FILE__), array('jquery', 'jquery-ui-core', 'jquery-ui-accordion'), '1.0', true );
+		wp_register_script( 'modern-accordion-shortcode' , plugins_url('accordion.js', __FILE__), array('jquery', 'jquery-ui-core', 'jquery-ui-accordion'), '1.0', true );
 	}
 
 
@@ -158,12 +164,12 @@ class OLT_Accordion_Shortcode {
 		if ( ! self::$add_script )
 			return;
 		
-		wp_enqueue_script( 'accordion-shortcode' );
-		wp_localize_script( 'accordion-shortcode', 'accordion_shortcode', self::$shortcode_js_data );
+		wp_enqueue_script( 'modern-accordion-shortcode' );
+		wp_localize_script( 'modern-accordion-shortcode', 'accordion_shortcode', self::$shortcode_js_data );
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-accordion' );
 	}
 }
 // lets play
-OLT_Accordion_Shortcode::init();
+MOD_Accordion_Shortcode::init();

@@ -21,34 +21,65 @@
 	font-size: 1.25em;
 	vertical-align: bottom;
 	margin-right: 0.25em;
+	color: #343434;
 
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-
 	
-.mas-circle-add:before {
+.mas {
+	/* accordion header */
+	.ui-accordion-header {
+		margin: 10px 0;
+		padding: 5px;
+		background-color: #FAFAFA;
+		
+		&:hover {
+			background-color: #F1EDED;
+		}
+		
+		a {
+			text-decoration: none;
+			color: #343434;
+			
+			&:hover {
+				color: #4e4e4e;
+			}
+			
+		}
+	}
+	
+	.ui-accordion-header.ui-state-active {
+		background-color: #F1EDED;
+	}
+	
+	/* circle icons */
+	.mas-circle:before {
 	content: "\e600";
-}
-.ui-state-active .mas-circle-add:before {
-	content: "\e601";
-}
-.mas-close:before {
-	content: "\e602";
-}
-.mas-minus:before {
-	content: "\e603";
-}
-.mas-plus:before {
-	content: "\e604";
-}
-.mas-cross:before {
-	content: "\e605";
-}
+	}
+	
+	/* square icons */
+	.mas-square:before {
+		content: "\e604";
+	}
 
-.mas .ui-accordion-header {
-	margin: 10px 0;
-	padding: 5px;
+	/* accordion content */
+	.mas-content {
+		margin: 0 1.25em;
+	}
+	
+	.ui-state-active {
+		
+		.mas-square:before {
+			content: "\e603";
+		}
+		
+		.mas-circle:before {
+			content: "\e601";
+		}
+		
+	}
+
 }
 	
